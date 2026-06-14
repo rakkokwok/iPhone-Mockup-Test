@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern iPhone Mockup</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --theme-bg: #050507;
+      --screen-bg: #111114;
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --subtle: #6f6f76;
+      --card: rgba(255, 255, 255, 0.13);
+      --card-strong: rgba(255, 255, 255, 0.2);
+      --stroke: rgba(255, 255, 255, 0.18);
+      --control-bg: rgba(18, 18, 24, 0.74);
+      --lock-bg: radial-gradient(circle at 50% 18%, rgba(45, 120, 255, 0.42), transparent 34%),
+        linear-gradient(160deg, #07111f 0%, #171722 42%, #050507 100%);
+      --home-bg: radial-gradient(circle at 50% -10%, rgba(80, 160, 255, 0.34), transparent 32%),
+        linear-gradient(160deg, #101016 0%, #2a2a35 42%, #050507 100%);
+      --accent: #0a84ff;
+      --danger: #ff3b30;
+      --shadow: rgba(0, 0, 0, 0.55);
+      --glass-blur: blur(28px);
+    }
+
+    html[data-theme="light"] {
+      color-scheme: light;
+      --theme-bg: #dfe3ea;
+      --screen-bg: #f6f7fb;
+      --text: #1d1d1f;
+      --muted: #6e6e73;
+      --subtle: #8e8e93;
+      --card: rgba(255, 255, 255, 0.72);
+      --card-strong: rgba(255, 255, 255, 0.9);
+      --stroke: rgba(0, 0, 0, 0.1);
+      --control-bg: rgba(255, 255, 255, 0.74);
+      --lock-bg: radial-gradient(circle at 50% 18%, rgba(0, 122, 255, 0.28), transparent 34%),
+        linear-gradient(160deg, #d6ecff 0%, #f3f6ff 42%, #dbe4f0 100%);
+      --home-bg: radial-gradient(circle at 50% -10%, rgba(0, 122, 255, 0.24), transparent 32%),
+        linear-gradient(160deg, #d8ecff 0%, #f7f7ff 42%, #dbe4f0 100%);
+      --accent: #007aff;
+      --danger: #ff3b30;
+      --shadow: rgba(0, 0, 0, 0.22);
+      --glass-blur: blur(24px);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--theme-bg);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      user-select: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .stage {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 28px;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255, 255, 255, 0.14), transparent 24%),
+        radial-gradient(circle at 18% 80%, rgba(10, 132, 255, 0.18), transparent 28%),
+        radial-gradient(circle at 82% 76%, rgba(255, 59, 48, 0.12), transparent 26%),
+        linear-gradient(145deg, #111116, #050507 58%, #15151a);
+    }
+
+    .device {
+      width: min(92vw, 420px);
+      aspect-ratio: 9 / 19.5;
+      position: relative;
+      padding: 10px;
+      border-radius: 66px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.18), transparent 18%),
+        linear-gradient(145deg, #333338 0%, #050507 58%, #44444a 100%);
+      box-shadow:
+        0 42px 90px rgba(0, 0, 0, 0.58),
+        0 16px 34px rgba(0, 0, 0, 0.42),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.12),
+        inset 0 0 18px rgba(255, 255, 255, 0.06);
+    }
+
+    .device::before,
+    .device::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      width: 3px;
+      height: 72px;
+      border-radius: 999px;
+      background: #1a1a1d;
+      transform: translateX(-50%);
+      box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .device::before {
+      top: 118px;
+    }
+
+    .device::after {
+      top: 214px;
+    }
+
+    .screen {
+      position: absolute;
+      inset: 10px;
+      overflow: hidden;
+      border-radius: 48px;
+      padding: 10px 8px 28px;
+      background: var(--screen-bg);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 0 0 7px #07070a;
+    }
+
+    .screen::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 120;
+      background:
+        linear-gradient(120deg, rgba(255, 255, 255, 0.16), transparent 24%, transparent 68%, rgba(255, 255, 255, 0.08) 72%, transparent 86%),
+        radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.12), transparent 30%);
+      mix-blend-mode: screen;
+      opacity: 0.5;
+    }
+
+    .screen::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 121;
+      border-radius: 48px;
+      box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.36);
+    }
+
+    .dynamic-island {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      z-index: 60;
+      width: 98px;
+      height: 34px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: #050507;
+      box-shadow:
+        inset 0 -2px 5px rgba(255, 255, 255, 0.06),
+        0 1px 2px rgba(255, 255, 255, 0.08);
+    }
+
+    .dynamic-island::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      top: 10px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, #4b5570, #111318 62%, #050507);
+      box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.16);
+    }
+
+    .status-bar {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      right: 18px;
+      z-index: 55;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+      pointer-events: none;
+    }
+
+    .status-icons {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .signal {
+      display: inline-flex;
+      align-items: end;
+      gap: 2px;
+      width: 18px;
+      height: 13px;
+    }
+
+    .signal i {
+      display: block;
+      width: 3px;
+      border-radius: 99px;
+      background: currentColor;
+      opacity: 0.95;
+    }
+
+    .signal i:nth-child(1) { height: 4px; }
+    .signal i:nth-child(2) { height: 7px; }
+    .signal i:nth-child(3) { height: 10px; }
+    .signal i:nth-child(4) { height: 13px; }
+
+    .wifi {
+      position: relative;
+      width: 17px;
+      height: 13px;
+      border-radius: 999px;
+    }
+
+    .wifi::before,
+    .wifi::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 2px solid currentColor;
+      border-bottom-color: transparent;
+      border-radius: 999px;
+    }
+
+    .wifi::before {
+      width: 14px;
+      height: 10px;
+      top: 2px;
+    }
+
+    .wifi::after {
+      width: 6px;
+      height: 6px;
+      top: 8px;
+      border-color: transparent;
+      border-top-color: currentColor;
+      border-left-color: currentColor;
+      border-right-color: currentColor;
+      border-bottom-color: transparent;
+      transform: translateX(-50%) rotate(45deg);
+    }
+
+    .battery {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      width: 28px;
+      height: 13px;
+      border: 1.7px solid currentColor;
+      border-radius: 4px;
+      padding: 2px;
+    }
+
+    .battery::after {
+      content: "";
+      position: absolute;
+      right: -4px;
+      top: 4px;
+      width: 2px;
+      height: 5px;
+      border-radius: 0 2px 2px 0;
+      background: currentColor;
+    }
+
+    .battery span {
+      display: block;
+      width: 78%;
+      height: 100%;
+      border-radius: 2px;
+      background: currentColor;
+    }
+
+    .lock-screen,
+    .home-screen {
+      position: absolute;
+      inset: 0;
+    }
+
+    .lock-screen {
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      padding: 34px 24px 58px;
+      background: var(--lock-bg);
+      transition: transform 680ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 420ms ease;
+      touch-action: none;
+    }
+
+    .screen.unlocked .lock-screen {
+      transform: translateY(calc(-100% + 48px));
+      opacity: 0.38;
+    }
+
+    .lock-top {
+      display: grid;
+      gap: 8px;
+      text-align: center;
+    }
+
+    .lock-date {
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.28);
+    }
+
+    .lock-clock {
+      margin-top: 4px;
+      font-size: clamp(64px, 17vw, 86px);
+      line-height: 0.95;
+      font-weight: 300;
+      letter-spacing: -0.08em;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.32);
+    }
+
+    .unlock-hint {
+      margin-top: 22px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .unlock-button {
+      margin: 10px auto 0;
+      min-width: 112px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(180deg, #1d9bf0, #0a84ff);
+      box-shadow: 0 8px 20px rgba(10, 132, 255, 0.32);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .unlock-button:active {
+      transform: scale(0.98);
+    }
+
+    .lock-notifications {
+      margin-top: auto;
+      align-self: flex-start;
+      display: grid;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .screen.unlocked .lock-notifications {
+      opacity: 0;
+      transform: translateY(-8px);
+      transition: opacity 240ms ease, transform 240ms ease;
+    }
+
+    .lock-notification {
+      display: grid;
+      gap: 2px;
+      padding: 12px 14px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+    }
+
+    .lock-notification strong {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .lock-notification span {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    .home-screen {
+      z-index: 5;
+      padding: 54px 14px 38px;
+      background: var(--home-bg);
+      transition: transform 680ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      touch-action: none;
+    }
+
+    .screen:not(.unlocked) .home-screen {
+      transform: translateY(106%);
+    }
+
+    .home-background {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.82;
+      background:
+        radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.18), transparent 16%),
+        radial-gradient(circle at 82% 28%, rgba(124, 92, 255, 0.18), transparent 18%),
+        radial-gradient(circle at 38% 80%, rgba(255, 205, 0, 0.12), transparent 20%);
+    }
+
+    .widget-row {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.35fr 0.75fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .widget {
+      min-height: 112px;
+      padding: 16px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.16);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      overflow: hidden;
+    }
+
+    .widget h2,
+    .widget h3 {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .widget .big {
+      margin-top: 10px;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 300;
+      letter-spacing: -0.06em;
+    }
+
+    .widget .small {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .widget .weather-icon {
+      position: absolute;
+      right: 14px;
+      top: 18px;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #ffd500;
+      box-shadow: 0 0 0 9px rgba(255, 213, 0, 0.18);
+    }
+
+    .widget.compact {
+      display: grid;
+      align-content: space-between;
+      background: linear-gradient(160deg, rgba(52, 199, 89, 0.86), rgba(0, 199, 190, 0.72));
+    }
+
+    .compact-list {
+      display: grid;
+      gap: 7px;
+      margin-top: 8px;
+    }
+
+    .compact-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      color: var(--text);
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .compact-row span:last-child {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .app-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px 10px;
+      padding-bottom: 12px;
+    }
+
+    .app-icon,
+    .folder {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 78px;
+      border-radius: 18px;
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .app-icon {
+      padding-top: 2px;
+    }
+
+    .app-icon:active,
+    .folder:active {
+      transform: scale(0.96);
+    }
+
+    .app-icon.dragging,
+    .folder.dragging {
+      z-index: 130;
+      cursor: grabbing;
+      opacity: 0.94;
+      filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.32));
+    }
+
+    .icon {
+      position: relative;
+      flex: 0 0 auto;
+      width: 54px;
+      height: 54px;
+      margin-bottom: 6px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -8px 18px rgba(0, 0, 0, 0.1),
+        0 6px 12px rgba(0, 0, 0, 0.22);
+    }
+
+    .icon::before,
+    .icon::after {
+      content: "";
+      position: absolute;
+      display: block;
+    }
+
+    .app-name {
+      max-width: 72px;
+      color: var(--text);
+      font-size: 11px;
+      line-height: 1.15;
+      font-weight: 500;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.26);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .screen.edit-mode .app-name {
+      opacity: 0.46;
+    }
+
+    .edit-dot {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.58);
+      border: 2px solid var(--card-strong);
+      color: #fff;
+      font-size: 10px;
+      line-height: 12px;
+      text-align: center;
+      font-weight: 900;
+      display: none;
+    }
+
+    .screen.edit-mode .edit-dot {
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 17px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 5px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.28);
+    }
+
+    .icon-messages { background: linear-gradient(135deg, #34c759, #00c853); }
+    .icon-messages::before {
+      content: "";
+      width: 31px;
+      height: 19px;
+      left: 11.5px;
+      top: 17.5px;
+      border-radius: 999px 999px 999px 5px;
+      background: #fff;
+    }
+    .icon-messages::after {
+      content: "";
+      width: 11px;
+      height: 11px;
+      left: 29px;
+      top: 24px;
+      border-radius: 0 0 11px 0;
+      background: #fff;
+      transform: rotate(-45deg);
+    }
+
+    .icon-camera { background: linear-gradient(145deg, #8e8e93, #484850); }
+    .icon-camera::before {
+      content: "";
+      width: 23px;
+      height: 23px;
+      left: 15.5px;
+      top: 15.5px;
+      border: 5px solid rgba(255, 255, 255, 0.92);
+      border-radius: 50%;
+      background: #050507;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.18);
+    }
+    .icon-camera::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      right: 8px;
+      top: 8px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 0 3px #050507;
+    }
+
+    .icon-maps { background: linear-gradient(145deg, #0a84ff, #64d2ff); }
+    .icon-maps::before {
+      content: "";
+      width: 34px;
+      height: 34px;
+      left: 10px;
+      top: 10px;
+      border: 5px solid #fff;
+      border-radius: 50%;
+      background: transparent;
+    }
+    .icon-maps::after {
+      content: "";
+      width: 16px;
+      height: 16px;
+      left: 19px;
+      top: 24px;
+      border-radius: 50%;
+      background: #fff;
+      transform: translateY(4px);
+    }
+
+    .icon-wallet { background: linear-gradient(145deg, #ff9f0a, #ffcc00); }
+    .icon-wallet::before {
+      content: "";
+      width: 36px;
+      height: 30px;
+      left: 9px;
+      top: 12px;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: 0 8px 0 rgba(255, 255, 255, 0.34);
+    }
+    .icon-wallet::after {
+      content: "";
+      width: 34px;
+      height: 4px;
+      left: 10px;
+      top: 25px;
+      border-radius: 99px;
+      background: rgba(0, 0, 0, 0.28);
+    }
+
+    .icon-notes { background: linear-gradient(145deg, #ffd60a, #ffcc00); }
+    .icon-notes::before {
+      content: "";
+      width: 36px;
+      height: 35px;
+      left: 9px;
+      top: 9.5px;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.1);
+    }
+    .icon-notes::after {
+      content: "";
+      width: 30px;
+      height: 4px;
+      left: 12px;
+      top: 21px;
+      border-radius: 99px;
+      background: rgba(0, 0, 0, 0.32);
+      box-shadow: 0 7px 0 rgba(0, 0, 0, 0.22), 0 14px 0 rgba(0, 0, 0, 0.18);
+    }
+
+    .icon-photos { background: radial-gradient(circle at 30% 30%, #ff3b30, #ffcc00 34%, #34c759 50%, #00c7be 66%, #007aff 82%, #af52de); }
+    .icon-photos::before {
+      content: "";
+      width: 27px;
+      height: 27px;
+      left: 13.5px;
+      top: 13.5px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.78);
+    }
+    .icon-photos::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      left: 21px;
+      top: 21px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .icon-settings { background: linear-gradient(145deg, #8e8e93, #5f5f66); }
+    .icon-settings::before {
+      content: "";
+      width: 36px;
+      height: 36px;
+      left: 9px;
+      top: 9px;
+      border-radius: 12px;
+      background: radial-gradient(circle, transparent 0 4px, rgba(0, 0, 0, 0.62) 5px 7px, transparent 8px);
+    }
+    .icon-settings::after {
+      content: "";
+      width: 46px;
+      height: 26px;
+      left: 4px;
+      top: 14px;
+      border-radius: 14px;
+      background: repeating-linear-gradient(90deg, transparent 0 8px, rgba(0, 0, 0, 0.68) 8px 12px, transparent 12px 20px);
+      transform: rotate(25deg);
+    }
+
+    .icon-browser { background: linear-gradient(145deg, #0a84ff, #64d2ff); }
+    .icon-browser::before {
+      content: "";
+      width: 38px;
+      height: 38px;
+      left: 8px;
+      top: 8px;
+      border: 5px solid #fff;
+      border-radius: 50%;
+    }
+    .icon-browser::after {
+      content: "";
+      width: 14px;
+      height: 14px;
+      left: 20px;
+      top: 20px;
+      border-radius: 50%;
+      background: #fff;
+    }
+
+    .icon-mail { background: linear-gradient(145deg, #0a84ff, #007aff); }
+    .icon-mail::before {
+      content: "";
+      width: 38px;
+      height: 30px;
+      left: 8px;
+      top: 12px;
+      border-radius: 9px;
+      background: #fff;
+      box-shadow: inset 0 -4px 0 rgba(0, 122, 255, 0.24);
+    }
+    .icon-mail::after {
+      content: "";
+      width: 32px;
+      height: 10px;
+      left: 11px;
+      top: 18px;
+      border-top: 3px solid #007aff;
+      border-bottom: 3px solid #007aff;
+      transform: skewX(-25deg);
+    }
+
+    .icon-calendar { background: linear-gradient(180deg, #fff, #f2f2f7); }
+    .icon-calendar::before {
+      content: "";
+      width: 42px;
+      height: 14px;
+      left: 6px;
+      top: 0;
+      border-radius: 14px 14px 0 0;
+      background: var(--danger);
+    }
+    .icon-calendar::after {
+      content: "14";
+      color: var(--text);
+      font-size: 23px;
+      font-weight: 800;
+      left: 16px;
+      top: 20px;
+    }
+
+    .icon-weather { background: linear-gradient(145deg, #5ac8fa, #007aff); }
+    .icon-weather::before {
+      content: "";
+      width: 34px;
+      height: 34px;
+      left: 10px;
+      top: 10px;
+      border-radius: 50%;
+      background: #ffd500;
+      box-shadow: 0 0 0 8px rgba(255, 213, 0, 0.22);
+    }
+    .icon-weather::after {
+      content: "";
+      width: 36px;
+      height: 18px;
+      left: 4px;
+      top: 25px;
+      border-radius: 999px;
+      background: #fff;
+      box-shadow: 0 -8px 0 -2px #fff, 18px -5px 0 -3px #fff;
+    }
+
+    .icon-music { background: linear-gradient(145deg, #ff2d55, #ff9f0a); }
+    .icon-music::before {
+      content: "";
+      width: 20px;
+      height: 28px;
+      left: 17px;
+      top: 13px;
+      border-radius: 18px 18px 18px 4px;
+      background: #fff;
+      transform: rotate(-18deg);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+    }
+    .icon-music::after {
+      content: "";
+      width: 5px;
+      height: 18px;
+      left: 25px;
+      top: 31px;
+      border-radius: 99px;
+      background: #fff;
+      transform: rotate(-18deg);
+    }
+
+    .icon-finance { background: linear-gradient(145deg, #34c759, #00c7be); }
+    .icon-finance::before {
+      content: "";
+      width: 30px;
+      height: 22px;
+      left: 12px;
+      top: 16px;
+      background: transparent;
+    }
+    .icon-finance::after {
+      content: "";
+      width: 32px;
+      height: 28px;
+      left: 11px;
+      top: 13px;
+      clip-path: polygon(8% 88%, 28% 52%, 48% 66%, 70% 26%, 92% 40%);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .icon-health { background: linear-gradient(145deg, #ff3b30, #ff6b6b); }
+    .icon-health::before {
+      content: "";
+      width: 30px;
+      height: 25px;
+      left: 12px;
+      top: 15px;
+      background: #fff;
+      clip-path: polygon(50% 100%, 0 62%, 16% 45%, 25% 58%, 50% 34%, 75% 58%, 84% 45%, 100% 62%);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+    }
+
+    .folder {
+      gap: 8px;
+      padding: 4px;
+      background: transparent;
+    }
+
+    .folder-grid {
+      width: 60px;
+      height: 58px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 4px;
+    }
+
+    .folder-mini {
+      position: relative;
+      border-radius: 13px;
+      overflow: hidden;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    }
+
+    .folder-mini.one { background: linear-gradient(145deg, #34c759, #00c853); }
+    .folder-mini.two { background: linear-gradient(145deg, #0a84ff, #64d2ff); }
+    .folder-mini.three { background: linear-gradient(145deg, #ffcc00, #ff9f0a); }
+    .folder-mini.four { background: linear-gradient(145deg, #af52de, #ff2d55); }
+    .folder-mini.one::after,
+    .folder-mini.two::after,
+    .folder-mini.three::after,
+    .folder-mini.four::after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 2px;
+      left: 10px;
+      top: 12px;
+      border-radius: 99px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 8px 0 rgba(255, 255, 255, 0.42);
+    }
+
+    .dock {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      z-index: 4;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      height: 92px;
+      padding: 10px;
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+    }
+
+    html[data-theme="light"] .dock {
+      background: rgba(255, 255, 255, 0.72);
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+
+    .dock .app-icon {
+      width: 64px;
+      padding: 0;
+    }
+
+    .dock .app-name {
+      display: none;
+    }
+
+    .dock .icon {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 0;
+    }
+
+    .home-indicator {
+      position: absolute;
+      left: 50%;
+      bottom: 15px;
+      z-index: 70;
+      width: 132px;
+      height: 5px;
+      transform: translateX(-50%);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+      cursor: pointer;
+    }
+
+    .control-center {
+      position: absolute;
+      inset: 0;
+      z-index: 90;
+      padding: 18px 14px 40px;
+      background: rgba(0, 0, 0, 0.22);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      transform: translateY(-108%);
+      transition: transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      touch-action: none;
+    }
+
+    .screen.control-open .control-center {
+      transform: translateY(0);
+    }
+
+    .cc-panel {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      min-height: 310px;
+      padding: 16px;
+      border-radius: 32px;
+      background: var(--control-bg);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.28);
+    }
+
+    .cc-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+    }
+
+    .cc-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .cc-tile {
+      min-height: 64px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      background: var(--card);
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      transition: transform 160ms ease, background 220ms ease, border-color 220ms ease;
+    }
+
+    .cc-tile:active {
+      transform: scale(0.96);
+    }
+
+    .cc-tile strong {
+      font-size: 22px;
+      line-height: 1;
+    }
+
+    .cc-tile span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .cc-tile.active {
+      background: rgba(10, 132, 255, 0.28);
+      border-color: rgba(10, 132, 255, 0.62);
+    }
+
+    .cc-connection {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .cc-sliders {
+      display: grid;
+      gap: 14px;
+      margin-top: 14px;
+    }
+
+    .slider-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slider-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 700;
+      width: 72px;
+    }
+
+    .slider {
+      position: relative;
+      flex: 1;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--stroke);
+      overflow: hidden;
+    }
+
+    .slider span {
+      display: block;
+      width: 64%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #64d2ff, #7c5cff);
+    }
+
+    .app-layer {
+      position: absolute;
+      inset: 0;
+      z-index: 80;
+      background: var(--screen-bg);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 260ms ease;
+    }
+
+    .app-layer.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .app-screen {
+      position: absolute;
+      inset: 0;
+      overflow-y: auto;
+      padding: 54px 18px 34px;
+      background: var(--screen-bg);
+      transform: translateY(24px);
+      opacity: 0;
+      transition: transform 320ms cubic-bezier(0.2, 0.9, 0.2, 1), opacity 260ms ease;
+    }
+
+    .app-layer.active .app-screen {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .app-nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: var(--screen-bg);
+    }
+
+    .back-btn {
+      width: 34px;
+      height: 34px;
+      border: 0;
+      border-radius: 50%;
+      background: var(--card);
+      color: var(--text);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .app-title {
+      color: var(--text);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .app-content {
+      display: grid;
+      gap: 12px;
+    }
+
+    .app-hero {
+      padding: 18px;
+      border-radius: 28px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .app-hero p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.35;
+      font-size: 13px;
+    }
+
+    .app-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .app-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+    }
+
+    .app-row strong {
+      font-size: 14px;
+    }
+
+    .app-row span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .settings-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .settings-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+    }
+
+    .settings-row span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .settings-row strong {
+      font-size: 13px;
+      text-align: right;
+    }
+
+    .edit-hint {
+      position: absolute;
+      top: 64px;
+      left: 50%;
+      z-index: 110;
+      transform: translate(-50%, -8px);
+      width: max-content;
+      max-width: calc(100% - 28px);
+      padding: 9px 13px;
+      border-radius: 999px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      color: var(--text);
+      font-size: 12px;
+      font-weight: 700;
+      text-align: center;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .screen.edit-mode .edit-hint {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .floating-notification {
+      position: absolute;
+      top: 62px;
+      left: 50%;
+      z-index: 150;
+      width: min(328px, calc(100% - 28px));
+      padding: 13px 14px;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      opacity: 0;
+      transform: translate(-50%, -16px);
+      pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .floating-notification.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    .floating-notification strong {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 2px;
+    }
+
+    .floating-notification span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.25;
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(-2deg) translateY(0); }
+      25% { transform: rotate(2deg) translateY(-2px); }
+      50% { transform: rotate(-1deg) translateY(0); }
+      75% { transform: rotate(1deg) translateY(-1px); }
+    }
+
+    .screen.edit-mode .app-icon:not(.dragging),
+    .screen.edit-mode .folder:not(.dragging) {
+      animation: wiggle 140ms infinite alternate;
+    }
+
+    @media (max-width: 360px) {
+      .device {
+        width: 96vw;
+      }
+
+      .app-grid {
+        gap: 10px 8px;
+      }
+
+      .icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+      }
+
+      .app-name {
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage">
+    <section class="device" aria-label="Modern iPhone mockup">
+      <div class="screen" id="screen" tabindex="-1">
+        <div class="dynamic-island" aria-hidden="true"></div>
+
+        <div class="status-bar" aria-hidden="true">
+          <span id="clock">9:41</span>
+          <span class="status-icons">
+            <span class="signal"><i></i><i></i><i></i><i></i></span>
+            <span class="wifi"></span>
+            <span class="battery"><span></span></span>
+          </span>
+        </div>
+
+        <section class="lock-screen" id="lockScreen" aria-label="Lock screen">
+          <div class="lock-top">
+            <div class="lock-date" id="lockDate">Thursday, June 14</div>
+            <div class="lock-clock" id="lockClock">9:41</div>
+            <div class="unlock-hint">Swipe up to unlock</div>
+            <button class="unlock-button" id="unlockBtn" type="button">Unlock</button>
+          </div>
+          <div class="lock-notifications" id="lockNotifications" aria-live="polite"></div>
+        </section>
+
+        <section class="home-screen" id="homeScreen" aria-label="Home screen">
+          <div class="home-background" aria-hidden="true"></div>
+
+          <div class="widget-row" aria-label="Widgets">
+            <article class="widget">
+              <h2>Weather</h2>
+              <div class="weather-icon" aria-hidden="true"></div>
+              <div class="big">72°</div>
+              <div class="small">Sunny · Wind 6 mph</div>
+            </article>
+            <article class="widget compact">
+              <div>
+                <h3>Today</h3>
+                <div class="small">9:41 AM</div>
+              </div>
+              <div class="compact-list">
+                <div class="compact-row"><span>Steps</span><span>4,820</span></div>
+                <div class="compact-row"><span>Focus</span><span>Personal</span></div>
+                <div class="compact-row"><span>Battery</span><span>86%</span></div>
+              </div>
+            </article>
+          </div>
+
+          <div class="app-grid" id="appGrid"></div>
+          <div class="dock" id="dock" aria-label="Dock"></div>
+          <div class="home-indicator" id="homeIndicator" role="button" tabindex="0" aria-label="Tap to unlock"></div>
+        </section>
+
+        <div class="app-layer" id="appLayer" aria-live="polite">
+          <div class="app-screen" id="appScreen"></div>
+        </div>
+
+        <aside class="control-center" id="controlCenter" aria-label="Control Center">
+          <div class="cc-panel">
+            <button class="cc-close" type="button" aria-label="Close Control Center">×</button>
+            <div class="cc-grid">
+              <button class="cc-tile active" type="button" data-toggle="wifi">
+                <strong>Wi‑Fi</strong>
+                <span>On</span>
+              </button>
+              <button class="cc-tile active" type="button" data-toggle="bluetooth">
+                <strong>BT</strong>
+                <span>On</span>
+              </button>
+              <button class="cc-tile" type="button" data-toggle="focus">
+                <strong>◎</strong>
+                <span>Focus</span>
+              </button>
+              <button class="cc-tile active" type="button" data-toggle="battery">
+                <strong>86%</strong>
+                <span>Battery</span>
+              </button>
+              <button class="cc-tile active" type="button" data-toggle="flashlight">
+                <strong>⌁</strong>
+                <span>Flashlight</span>
+              </button>
+              <button class="cc-tile" type="button" data-toggle="timer">
+                <strong>⏱</strong>
+                <span>Timer</span>
+              </button>
+              <button class="cc-tile active" type="button" data-toggle="theme">
+                <strong>◐</strong>
+                <span id="themeLabel">Dark</span>
+              </button>
+              <button class="cc-tile" type="button" data-toggle="airplane">
+                <strong>✈</strong>
+                <span>Airplane</span>
+              </button>
+            </div>
+            <div class="cc-sliders" aria-label="Sliders">
+              <div class="slider-row">
+                <span class="slider-label">Brightness</span>
+                <div class="slider" aria-label="Brightness"><span style="width: 64%"></span></div>
+              </div>
+              <div class="slider-row">
+                <span class="slider-label">Volume</span>
+                <div class="slider" aria-label="Volume"><span style="width: 42%"></span></div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+        <div class="floating-notification" id="toast" aria-live="polite"></div>
+        <div class="edit-hint" id="editHint">Drag icons to rearrange · Tap outside to exit</div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      const root = document.documentElement;
+      const screen = document.getElementById("screen");
+      const lockScreen = document.getElementById("lockScreen");
+      const homeScreen = document.getElementById("homeScreen");
+      const lockNotifications = document.getElementById("lockNotifications");
+      const appGrid = document.getElementById("appGrid");
+      const dock = document.getElementById("dock");
+      const appLayer = document.getElementById("appLayer");
+      const appScreen = document.getElementById("appScreen");
+      const toast = document.getElementById("toast");
+      const unlockBtn = document.getElementById("unlockBtn");
+      const lockClock = document.getElementById("lockClock");
+      const clock = document.getElementById("clock");
+      const homeIndicator = document.getElementById("homeIndicator");
+      const controlCenter = document.getElementById("controlCenter");
+      const themeLabel = document.getElementById("themeLabel");
+
+      const apps = [
+        { id: "messages", name: "Messages", icon: "icon-messages", badge: 3 },
+        { id: "camera", name: "Camera", icon: "icon-camera" },
+        { id: "maps", name: "Maps", icon: "icon-maps" },
+        { id: "wallet", name: "Wallet", icon: "icon-wallet" },
+        { id: "notes", name: "Notes", icon: "icon-notes" },
+        { id: "photos", name: "Photos", icon: "icon-photos" },
+        { id: "settings", name: "Settings", icon: "icon-settings" },
+        { id: "browser", name: "Browser", icon: "icon-browser" },
+        { id: "mail", name: "Mail", icon: "icon-mail" },
+        { id: "calendar", name: "Calendar", icon: "icon-calendar" },
+        { id: "weather", name: "Weather", icon: "icon-weather" },
+        { id: "music", name: "Music", icon: "icon-music" },
+        { id: "finance", name: "Finance", icon: "icon-finance" },
+        { id: "health", name: "Health", icon: "icon-health" }
+      ];
+
+      const folders = [
+        { id: "utilities", name: "Utilities", apps: ["calendar", "weather", "maps"] },
+        { id: "creative", name: "Creative", apps: ["photos", "music", "camera"] }
+      ];
+
+      const dockApps = ["messages", "browser", "camera", "music"];
+
+      const fakeNotifications = [
+        { sender: "Messages", title: "Design notes ready", body: "The mockup draft is ready for review." },
+        { sender: "Calendar", title: "Model review at 3:00", body: "A 30 minute comparison session is coming up." },
+        { sender: "Weather", title: "Clear afternoon", body: "Sunny conditions continue through early evening." },
+        { sender: "Mail", title: "New message from Studio", body: "A generic update has arrived in your inbox." },
+        { sender: "Health", title: "Walk complete", body: "Your daily movement goal is nearly complete." }
+      ];
+
+      const state = {
+        locked: true,
+        editMode: false,
+        controlCenterOpen: false,
+        theme: root.dataset.theme || "dark",
+        currentApp: null,
+        notifications: []
+      };
+
+      let longPressTimer = null;
+      let longPressed = false;
+      let swipeStart = null;
+      let dragState = null;
+      let toastTimer = null;
+      let notificationTimer = null;
+
+      function updateClock() {
+        const now = new Date();
+        const time = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        clock.textContent = time;
+        lockClock.textContent = time;
+      }
+
+      function iconMarkup(iconClass) {
+        return "";
+      }
+
+      function renderIcon(app) {
+        return `
+          <span class="icon ${app.icon}">
+            ${iconMarkup(app.icon)}
+          </span>
+        `;
+      }
+
+      function renderFolderMini(appId) {
+        const app = apps.find((item) => item.id === appId);
+        if (!app) return "";
+        return `<span class="folder-mini ${folderClass(appId)}">${iconMarkup(app.icon)}</span>`;
+      }
+
+      function folderClass(appId) {
+        if (["calendar", "weather", "maps"].includes(appId)) return "one";
+        if (["photos", "music", "camera"].includes(appId)) return "two";
+        return "three";
+      }
+
+      function renderApps() {
+        appGrid.innerHTML = apps.map((app) => `
+          <div class="app-icon" data-app="${app.id}" role="button" tabindex="0" aria-label="${app.name}">
+            ${renderIcon(app)}
+            <span class="app-name">${app.name}</span>
+            ${app.badge ? `<span class="badge">${app.badge}</span>` : ""}
+            <span class="edit-dot" aria-hidden="true">×</span>
+          </div>
+        `).join("") + folders.map((folder) => `
+          <div class="folder" data-folder="${folder.id}" role="button" tabindex="0" aria-label="${folder.name} folder">
+            <div class="folder-grid" aria-hidden="true">
+              ${folder.apps.map(renderFolderMini).join("")}
+            </div>
+            <span class="app-name">${folder.name}</span>
+            <span class="edit-dot" aria-hidden="true">×</span>
+          </div>
+        `).join("");
+
+        dock.innerHTML = dockApps.map((appId) => {
+          const app = apps.find((item) => item.id === appId);
+          return `
+            <div class="app-icon" data-app="${app.id}" role="button" tabindex="0" aria-label="${app.name}">
+              ${renderIcon(app)}
+              <span class="app-name">${app.name}</span>
+              <span class="edit-dot" aria-hidden="true">×</span>
+            </div>
+          `;
+        }).join("");
+
+        attachIconEvents();
+      }
+
+      function attachIconEvents() {
+        document.querySelectorAll(".app-icon, .folder").forEach((element) => {
+          const appId = element.dataset.app;
+          const folderId = element.dataset.folder;
+
+          element.addEventListener("pointerdown", (event) => {
+            if (state.currentApp) closeApp();
+            if (state.controlCenterOpen) return;
+            if (state.editMode) {
+              beginDrag(element, event);
+              return;
+            }
+
+            longPressed = false;
+            clearTimeout(longPressTimer);
+            longPressTimer = window.setTimeout(() => {
+              longPressed = true;
+              enterEditMode();
+            }, 450);
+          });
+
+          element.addEventListener("pointerup", (event) => {
+            if (state.editMode) {
+              endDrag();
+              return;
+            }
+
+            clearTimeout(longPressTimer);
+            if (!longPressed && !dragState) {
+              if (appId) openApp(appId);
+              if (folderId) openFolder(folderId);
+            }
+          });
+
+          element.addEventListener("pointercancel", cancelDrag);
+          element.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              if (state.editMode) return;
+              if (appId) openApp(appId);
+              if (folderId) openFolder(folderId);
+            }
+          });
+        });
+      }
+
+      function beginDrag(element, event) {
+        const rect = element.getBoundingClientRect();
+        dragState = {
+          element,
+          offsetX: event.clientX - rect.left,
+          offsetY: event.clientY - rect.top,
+          gridRect: appGrid.getBoundingClientRect()
+        };
+        element.classList.add("dragging");
+        element.setPointerCapture(event.pointerId);
+      }
+
+      function moveDrag(event) {
+        if (!dragState) return;
+        const { element, offsetX, offsetY, gridRect } = dragState;
+        const x = Math.max(0, Math.min(event.clientX - gridRect.left - offsetX, gridRect.width - 64));
+        const y = Math.max(0, Math.min(event.clientY - gridRect.top - offsetY, gridRect.height - 78));
+        element.style.transform = `translate(${x}px, ${y}px)`;
+      }
+
+      function endDrag() {
+        if (!dragState) return;
+        dragState.element.classList.remove("dragging");
+        dragState = null;
+      }
+
+      function cancelDrag() {
+        if (!dragState) return;
+        dragState.element.classList.remove("dragging");
+        dragState.element.style.transform = "";
+        dragState = null;
+      }
+
+      function unlock() {
+        state.locked = false;
+        screen.classList.remove("control-open");
+        screen.classList.add("unlocked");
+      }
+
+      function lockDevice() {
+        state.locked = true;
+        screen.classList.remove("unlocked");
+        closeApp();
+        closeControlCenter();
+      }
+
+      function enterEditMode() {
+        if (state.editMode) return;
+        state.editMode = true;
+        screen.focus();
+        screen.classList.add("edit-mode");
+        showEditHint("Edit mode · Drag icons or tap outside to exit");
+      }
+
+      function exitEditMode() {
+        if (!state.editMode) return;
+        state.editMode = false;
+        screen.classList.remove("edit-mode");
+        endDrag();
+        document.querySelectorAll(".app-icon, .folder").forEach((element) => {
+          element.style.transform = "";
+        });
+        showEditHint("Drag icons to rearrange · Tap outside to exit", 1800);
+      }
+
+      function showEditHint(text, delay) {
+        const editHint = document.getElementById("editHint");
+        editHint.textContent = text;
+        editHint.classList.add("show");
+        clearTimeout(editHint._timer);
+        editHint._timer = window.setTimeout(() => {
+          editHint.classList.remove("show");
+        }, delay || 2600);
+      }
+
+      function openApp(appId) {
+        const app = apps.find((item) => item.id === appId);
+        if (!app) return;
+        state.currentApp = appId;
+        appScreen.innerHTML = `
+          <div class="app-nav">
+            <button class="back-btn" type="button" data-close-app aria-label="Back">‹</button>
+            <div class="app-title">${app.name}</div>
+          </div>
+          <div class="app-content">
+            ${appContent(appId)}
+          </div>
+        `;
+        appLayer.classList.add("active");
+        const backButton = appScreen.querySelector("[data-close-app]");
+        backButton.addEventListener("click", closeApp);
+      }
+
+      function openFolder(folderId) {
+        const folder = folders.find((item) => item.id === folderId);
+        if (!folder) return;
+        state.currentApp = `folder:${folderId}`;
+        appScreen.innerHTML = `
+          <div class="app-nav">
+            <button class="back-btn" type="button" data-close-app aria-label="Back">‹</button>
+            <div class="app-title">${folder.name}</div>
+          </div>
+          <div class="app-content">
+            <div class="app-hero">
+              <h2>${folder.name}</h2>
+              <p>A generic folder containing simple app shortcuts. This screen keeps the mockup self-contained and avoids real app logos.</p>
+            </div>
+            <div class="app-list">
+              ${folder.apps.map((appId) => {
+                const app = apps.find((item) => item.id === appId);
+                return `
+                  <div class="app-row" data-app="${app.id}">
+                    <span><strong>${app.name}</strong><br><span>${app.description || "Generic app"}</span></span>
+                    <span>›</span>
+                  </div>
+                `;
+              }).join("")}
+            </div>
+          </div>
+        `;
+        appLayer.classList.add("active");
+        appScreen.querySelector("[data-close-app]").addEventListener("click", closeApp);
+        appScreen.querySelectorAll("[data-app]").forEach((row) => {
+          row.addEventListener("click", () => openApp(row.dataset.app));
+        });
+      }
+
+      function closeApp() {
+        state.currentApp = null;
+        appLayer.classList.remove("active");
+      }
+
+      function appContent(appId) {
+        const common = {
+          messages: `
+            <div class="app-hero">
+              <h2>Inbox</h2>
+              <p>Generic message preview cards with no real service branding.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Design notes</strong><br><span>Messages</span></span><span>9:18</span></div>
+              <div class="app-row"><span><strong>Studio update</strong><br><span>Mail</span></span><span>8:42</span></div>
+              <div class="app-row"><span><strong>Review session</strong><br><span>Calendar</span></span><span>Yesterday</span></div>
+            </div>`,
+          camera: `
+            <div class="app-hero">
+              <h2>Camera</h2>
+              <p>A generic viewfinder-style screen with CSS shapes.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Photo mode</strong><br><span>Generic</span></span><span>Live</span></div>
+              <div class="app-row"><span><strong>Video mode</strong><br><span>Generic</span></span><span>Off</span></div>
+            </div>`,
+          maps: `
+            <div class="app-hero">
+              <h2>Maps</h2>
+              <p>Generic navigation preview using simple cards instead of map assets.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Home</strong><br><span>12 min away</span></span><span>3.4 mi</span></div>
+              <div class="app-row"><span><strong>Studio</strong><br><span>5 min away</span></span><span>1.2 mi</span></div>
+            </div>`,
+          wallet: `
+            <div class="app-hero">
+              <h2>Wallet</h2>
+              <p>Generic card previews with no real payment branding.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Generic Card</strong><br><span>•••• 1234</span></span><span>Active</span></div>
+              <div class="app-row"><span><strong>Pass</strong><br><span>Member ID</span></span><span>Active</span></div>
+            </div>`,
+          notes: `
+            <div class="app-hero">
+              <h2>Notes</h2>
+              <p>A simple generic note editor preview.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Mockup checklist</strong><br><span>Lock, dock, widgets, badges</span></span><span>Updated now</span></div>
+              <div class="app-row"><span><strong>Video ideas</strong><br><span>Home screen comparison</span></span><span>Yesterday</span></div>
+            </div>`,
+          photos: `
+            <div class="app-hero">
+              <h2>Photos</h2>
+              <p>Generic photo tiles generated with CSS gradients.</p>
+            </div>
+            <div class="app-list">
+              ${Array.from({ length: 6 }).map((_, index) => `
+                <div class="app-row">
+                  <span><strong>Memory ${index + 1}</strong><br><span>Generic album</span></span><span>${index + 18} photos</span>
+                </div>
+              `).join("")}
+            </div>`,
+          settings: `
+            <div class="settings-list">
+              <div class="settings-row"><span>Wi‑Fi</span><strong>On</strong></div>
+              <div class="settings-row"><span>Bluetooth</span><strong>On</strong></div>
+              <div class="settings-row"><span>Focus</span><strong>Personal</strong></div>
+              <div class="settings-row"><span>Display & Brightness</span><strong>${state.theme === "dark" ? "Dark" : "Light"}</strong></div>
+              <div class="settings-row"><span>Model family/name</span><strong>Nex-N2-mini-UD-Q4_K_XL</strong></div>
+              <div class="settings-row"><span>Generated by</span><strong>Claude Code</strong></div>
+            </div>`,
+          browser: `
+            <div class="app-hero">
+              <h2>Browser</h2>
+              <p>Generic browser home with search and favorite-style tiles.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Search</strong><br><span>Generic search engine</span></span><span>›</span></div>
+              <div class="app-row"><span><strong>Reading List</strong><br><span>3 saved pages</span></span><span>›</span></div>
+            </div>`,
+          mail: `
+            <div class="app-hero">
+              <h2>Mail</h2>
+              <p>Generic mail inbox preview.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Design notes</strong><br><span>Messages</span></span><span>3 new</span></div>
+              <div class="app-row"><span><strong>Studio update</strong><br><span>Mail</span></span><span>Today</span></div>
+            </div>`,
+          calendar: `
+            <div class="app-hero">
+              <h2>Calendar</h2>
+              <p>Generic calendar day view.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>9:00 AM</strong><br><span>Review session</span></span><span>Today</span></div>
+              <div class="app-row"><span><strong>1:00 PM</strong><br><span>Lunch</span></span><span>Today</span></div>
+              <div class="app-row"><span><strong>3:00 PM</strong><br><span>Model comparison</span></span><span>Today</span></div>
+            </div>`,
+          weather: `
+            <div class="app-hero">
+              <h2>Weather</h2>
+              <p>Generic weather details and hourly forecast.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Now</strong><br><span>72° Sunny</span></span><span>64%</span></div>
+              <div class="app-row"><span><strong>Hourly</strong><br><span>Clear through evening</span></span><span>›</span></div>
+            </div>`,
+          music: `
+            <div class="app-hero">
+              <h2>Music</h2>
+              <p>Generic music player preview.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Now Playing</strong><br><span>Generic instrumental</span></span><span>Live</span></div>
+              <div class="app-row"><span><strong>Up Next</strong><br><span>Instrumental playlist</span></span><span>›</span></div>
+            </div>`,
+          finance: `
+            <div class="app-hero">
+              <h2>Finance</h2>
+              <p>Generic finance chart card.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Balance</strong><br><span>Generic account</span></span><span>$2,480</span></div>
+              <div class="app-row"><span><strong>Trends</strong><br><span>Monthly overview</span></span><span>›</span></div>
+            </div>`,
+          health: `
+            <div class="app-hero">
+              <h2>Health</h2>
+              <p>Generic health and activity summary.</p>
+            </div>
+            <div class="app-list">
+              <div class="app-row"><span><strong>Steps</strong><br><span>4,820 of 7,000</span></span><span>69%</span></div>
+              <div class="app-row"><span><strong>Heart rate</strong><br><span>68 bpm</span></span><span>Normal</span></div>
+            </div>`
+        };
+
+        return common[appId] || `
+          <div class="app-hero">
+            <h2>${appId}</h2>
+            <p>Generic app preview.</p>
+          </div>
+        `;
+      }
+
+      function openControlCenter() {
+        if (state.currentApp) return;
+        state.controlCenterOpen = true;
+        screen.classList.add("control-open");
+      }
+
+      function closeControlCenter() {
+        state.controlCenterOpen = false;
+        screen.classList.remove("control-open");
+      }
+
+      function toggleTheme() {
+        state.theme = state.theme === "dark" ? "light" : "dark";
+        root.dataset.theme = state.theme;
+        themeLabel.textContent = state.theme === "dark" ? "Dark" : "Light";
+        document.querySelectorAll("[data-toggle='theme']").forEach((tile) => tile.classList.toggle("active", true));
+        showToast("Display", state.theme === "dark" ? "Dark mode enabled" : "Light mode enabled");
+      }
+
+      function showToast(sender, body) {
+        toast.innerHTML = `<strong>${sender}</strong><span>${body}</span>`;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => {
+          toast.classList.remove("show");
+        }, 3400);
+      }
+
+      function addNotification() {
+        const notification = fakeNotifications[Math.floor(Math.random() * fakeNotifications.length)];
+        state.notifications.push(notification);
+        state.notifications = state.notifications.slice(-6);
+        renderLockNotifications();
+        showToast(notification.sender, notification.body);
+      }
+
+      function renderLockNotifications() {
+        lockNotifications.innerHTML = state.notifications.slice(0, 4).map((notification) => `
+          <div class="lock-notification">
+            <strong>${notification.sender}</strong>
+            <span>${notification.title}<br>${notification.body}</span>
+          </div>
+        `).join("");
+      }
+
+      function scheduleNotifications() {
+        notificationTimer = window.setTimeout(() => {
+          addNotification();
+          scheduleNotifications();
+        }, 6500);
+      }
+
+      function setupControlCenterToggles() {
+        document.querySelectorAll("[data-toggle]").forEach((tile) => {
+          tile.addEventListener("click", (event) => {
+            event.stopPropagation();
+            const key = tile.dataset.toggle;
+            if (key === "theme") {
+              toggleTheme();
+              return;
+            }
+
+            tile.classList.toggle("active");
+            const label = tile.querySelector("span");
+            if (label) label.textContent = tile.classList.contains("active") ? "On" : "Off";
+            showToast("Control Center", `${tile.querySelector("strong").textContent} ${tile.classList.contains("active") ? "enabled" : "disabled"}`);
+          });
+        });
+
+        document.querySelectorAll(".slider").forEach((slider) => {
+          const fill = slider.querySelector("span");
+          let value = Number(fill.style.width.replace("%", ""));
+
+          slider.addEventListener("pointerdown", (event) => {
+            slider.setPointerCapture(event.pointerId);
+            updateSlider(event, value);
+          });
+
+          slider.addEventListener("pointermove", (event) => {
+            const rect = slider.getBoundingClientRect();
+            const next = Math.max(4, Math.min(100, ((event.clientX - rect.left) / rect.width) * 100));
+            updateSlider(event, next);
+          });
+
+          function updateSlider(event, next) {
+            fill.style.width = `${next}%`;
+            showToast("Control Center", event.target.getAttribute("aria-label") + ` ${Math.round(next)}%`);
+          }
+        });
+      }
+
+      function setupSwipeHandlers() {
+        attachSwipe(lockScreen, unlock, openControlCenter);
+        attachSwipe(homeScreen, () => {}, openControlCenter);
+      }
+
+      function attachSwipe(container, onUp, onDown) {
+        container.addEventListener("pointerdown", (event) => {
+          if (state.currentApp || state.controlCenterOpen || event.target.closest("button, input, .app-icon, .folder, .home-indicator")) return;
+          swipeStart = { x: event.clientX, y: event.clientY };
+        });
+
+        container.addEventListener("pointerup", (event) => {
+          if (!swipeStart) return;
+          const dy = event.clientY - swipeStart.y;
+          const dx = event.clientX - swipeStart.x;
+          if (dy > 90 && Math.abs(dy) > Math.abs(dx) * 1.2) {
+            onUp();
+          } else if (dy < -90 && Math.abs(dy) > Math.abs(dx) * 1.2) {
+            onDown();
+          }
+          swipeStart = null;
+        });
+
+        container.addEventListener("pointercancel", () => {
+          swipeStart = null;
+        });
+      }
+
+      function setupGlobalEvents() {
+        document.addEventListener("pointerdown", (event) => {
+          if (state.editMode && !event.target.closest(".app-icon, .folder, .edit-hint")) {
+            exitEditMode();
+          }
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") {
+            if (state.currentApp) closeApp();
+            if (state.controlCenterOpen) closeControlCenter();
+            if (state.editMode) exitEditMode();
+          }
+        });
+
+        homeIndicator.addEventListener("click", unlock);
+        homeIndicator.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            unlock();
+          }
+        });
+
+        unlockBtn.addEventListener("click", unlock);
+
+        controlCenter.addEventListener("click", (event) => {
+          if (event.target.classList.contains("cc-close") || event.target === controlCenter) {
+            closeControlCenter();
+          }
+        });
+
+        screen.addEventListener("click", (event) => {
+          if (state.controlCenterOpen && event.target === controlCenter) closeControlCenter();
+        });
+      }
+
+      function init() {
+        updateClock();
+        window.setInterval(updateClock, 30000);
+        renderApps();
+        renderLockNotifications();
+        setupControlCenterToggles();
+        setupSwipeHandlers();
+        setupGlobalEvents();
+        scheduleNotifications();
+      }
+
+      init();
+    })();
+  </script>
+</body>
+</html>
